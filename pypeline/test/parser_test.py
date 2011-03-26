@@ -33,7 +33,7 @@ class TestParser(unittest.TestCase):
     def test_parse_movie(self):
         for filename, movie in self.MOVIES:
             self.assertEqual(pypeline.parser.parse_movie(filename), movie)
-    
+
     def test_parse_tv_show(self):
         for filename, tv_show in self.TV_SHOWS:
             self.assertEqual(pypeline.parser.parse_tv_show(filename), tv_show)

@@ -90,13 +90,13 @@ Jonathon Rubin <jb.rubin@gmail.com> (jbrjake)
 
 Scott <unknown> (s55)
  + Windows GUI
- 
+
 John Stebbins <jstebbins.hb@gmail.com> (j45)
  + GTK GUI
  + TrueHD demuxing
  + libavcodec video encoding quality enhancements
  + Numerous bug fixes
- 
+
 Chris Thoman <cthoman@gmail.com> (huevos_rancheros)
  + Ported video filters from libmpcodec
 
