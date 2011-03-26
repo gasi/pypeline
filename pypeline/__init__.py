@@ -14,24 +14,28 @@ VERSION_INFO = (0, 1, 0)
 import imdb
 import glob
 import logging
+import optparse
 import os
 import os.path
 import parser
 import re
 import subprocess
+import sys
 
-SOURCE = '~/Downloads'
-TARGET = '~/Movies'
-ENCODED_EXTENSIONS = ['m4v']
+DEFAULT_SOURCE = '~/Downloads'
+DEFAULT_DESTINATION = '~/Movies/pypeline'
+
+ENCODED_EXTENSIONS = ['m4v', 'mp4']
 EXTENSIONS = ['wmv', 'avi', 'mpg', 'mpeg', 'mkv'] + ENCODED_EXTENSIONS
+ILLEGAL_CHARACTERS = ['[', ']', '*', ':']
+
+IMDb = imdb.IMDb()
 SERIES_OVERRIDES = {}
 MOVIE_OVERRIDES = {}
 
-IMDb = imdb.IMDb()
-
-ILLEGAL_CHARACTERS = ['[', ']', '*']
-HANDBRAKE = '../vendor/handbrake/HandbrakeCLI'
-ATOMIC_PARSLEY = '../vendor/atomic_parsley/AtomicParsley'
+BASE = os.path.dirname(os.path.abspath(__file__))
+HANDBRAKE = os.path.join(BASE, '../vendor/handbrake/HandbrakeCLI')
+ATOMIC_PARSLEY = os.path.join(BASE, '../vendor/atomic_parsley/AtomicParsley')
 
 # Apple TV settings
 def encode(source, target):
@@ -58,7 +62,10 @@ def get_imdb_descriptor(item):
     if 'series_title' in item:
         series_title = item['series_title'].lower()
         if series_title not in SERIES_OVERRIDES:
-            movie = IMDb.search_movie(series_title)[0]
+            movies = IMDb.search_movie(series_title)
+            if not movies:
+                return None
+            movie = movies[0]
         else:
             movie = IMDb.get_movie(SERIES_OVERRIDES[series_title])
         IMDb.update(movie, 'episodes')
@@ -120,16 +127,13 @@ def get_target_temp_filename(filename):
     temp_filename = files[0] if files else None
     return temp_filename
 
-def get_target_filename(filename, descriptor):
+def get_target_filename(destination, filename, descriptor):
     target_basename = os.path.basename(os.path.splitext(filename)[0])
-    if descriptor:
-        if 'series_title' in descriptor:
-            target_basename = '%(series_title)s S%(season)02dE%(episode)02d' % descriptor
-        elif 'title' in descriptor:
-            target_basename = '%(title)s' % descriptor
+    target_basename = get_title(descriptor, target_basename)
+    # sanitize target filename
     for char in ILLEGAL_CHARACTERS:
         target_basename = target_basename.replace(char, '')
-    target = os.path.join(TARGET, target_basename + '.m4v')
+    target = os.path.join(destination, target_basename + '.m4v')
     return target
 
 def get_sources(path):
@@ -139,8 +143,21 @@ def get_sources(path):
         sources += glob.glob(path + '/**/*.' + extension)
     return sorted(sources)
 
-def main():
-    sources = get_sources(SOURCE)
+def get_title(descriptor, default='Untitled'):
+    if 'series_title' in descriptor:
+        return '%(series_title)s S%(season)02dE%(episode)02d' % descriptor
+    elif 'title' in descriptor:
+        return '%(title)s' % descriptor
+    else:
+        return default
+
+def process(src, dest):
+    s = os.path.expanduser(src)
+    d = os.path.expanduser(dest)
+    if not os.path.exists(d):
+        os.makedirs(d)
+    
+    sources = get_sources(s)
     for source in sources:
         # acquire metadata
         item = parser.parse_tv_show(source)
@@ -151,13 +168,26 @@ def main():
             descriptor = get_imdb_descriptor(item)
 
         # encoding
-        target = get_target_filename(source, descriptor)
+        target = get_target_filename(d, source, descriptor)
         if not os.path.exists(target):
+            print('Encoding: %s' % get_title(descriptor))
             encode(source, target)
 
         # metadata
         if descriptor:
+            print('Writing metadata: %s' % get_title(descriptor))
             set_metadata(target, descriptor)
+
+
+def main():
+    parser = optparse.OptionParser(usage='Usage: %prog [options] filename')
+    parser.add_option('-s', '--source', dest='source', default=DEFAULT_SOURCE,
+                      help='Source path. Default: ' + DEFAULT_SOURCE)
+    parser.add_option('-d', '--destination', dest='destination',
+                      default=DEFAULT_DESTINATION,
+                      help='Destination path. Default: ' + DEFAULT_DESTINATION)
+    (options, args) = parser.parse_args()
+    process(options.source, options.destination)
 
 if __name__ == '__main__':
     main()
