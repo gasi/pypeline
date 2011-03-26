@@ -1,13 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from distutils.core import setup
+import ez_setup
+ez_setup.use_setuptools()
 
-setup(name="pypeline",
-      version="0.1.0",
-      description="pypeline encodes and tags your movies & TV shows for iTunes",
-      author="Daniel Gasienica",
-      author_email="daniel@gasienica.ch",
-      keywords="pypeline itunes m4v tags movies tvshows tv encoding handbrake",
-      url="http://github.com/gasi/pypeline",
-      py_modules=["pypeline/__init__"])
+from setuptools import setup, find_packages
+import pypeline
+
+setup(name='pypeline',
+      version=pypeline.VERSION,
+      description='pypeline encodes and tags your movies & TV shows for iTunes',
+      author='Daniel Gasienica',
+      author_email='daniel@gasienica.ch',
+      keywords='pypeline itunes m4v tags movies tvshows tv encoding handbrake',
+      url='https://github.com/gasi/pypeline',
+      packages = ['pypeline', 'vendor'],
+      include_package_data=True,
+      entry_points = {
+        'console_scripts': [
+            'pypeline = pypeline:main'
+        ]
+      })

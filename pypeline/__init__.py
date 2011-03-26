@@ -8,8 +8,7 @@ Created by Daniel Gasienica on 2010-12-29.
 Copyright (c) 2010 Daniel Gasienica. All rights reserved.
 """
 
-VERSION = "0.1"
-VERSION_INFO = (0, 1, 0)
+VERSION = '0.0.1'
 
 import imdb
 import glob
@@ -20,7 +19,6 @@ import os.path
 import parser
 import re
 import subprocess
-import sys
 
 DEFAULT_SOURCE = '~/Downloads'
 DEFAULT_DESTINATION = '~/Movies/pypeline'
@@ -144,6 +142,9 @@ def get_sources(path):
     return sorted(sources)
 
 def get_title(descriptor, default='Untitled'):
+    if not descriptor:
+        return default
+    
     if 'series_title' in descriptor:
         return '%(series_title)s S%(season)02dE%(episode)02d' % descriptor
     elif 'title' in descriptor:
