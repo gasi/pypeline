@@ -134,7 +134,7 @@ def get_target_filename(destination, filename, descriptor):
     for char in ILLEGAL_CHARACTERS:
         target_basename = target_basename.replace(char, '')
     target = os.path.join(destination, target_basename + '.m4v')
-    return targetÍ
+    return target
 
 def get_sources(path):
     sources = []
