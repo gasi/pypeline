@@ -417,166 +417,166 @@ CLI
 
 Changes between 0.9.0 and 0.9.1:
 
-	Core HandBrake Changes:
-	+ Added: Forced subtitle support
-	+ Added: 6-channel Vorbis audio
-	+ Changed: Much better buffer management, leading to impressive speed-ups all over the place
-	+ Changed: Color subtitles now display in color, instead of being transparent.
-	+ Changed: All errors to stderr with hb_log() instead of to stdout with fprintf()
-	+ Changed: Accept stream input where the file type is in caps (.VOB instead of just .vob, etc)
-	+ Changed: Better quality Vorbis codec (AoTuV)
-	+ Changed: Faster (threaded) ffmpeg
-	+ Changed: Force x264 to use a key frame at chapter markers
-	+ Changed: Try to recover from bad preview scans instead of crashing
-	+ Fixed: No more hanging when using MKV with chapter markers
-	+ Fixed: "Same as source" FPS now works correctly when the end-credits of a progressive film are interlaced.
-	+ Fixed: "Slow" deinterlacing no longer doubles up the chapter markers
-	+ Fixed: Proper display of fading subtitles
-	+ Fixed: Nasty artifacts from inaccurate rounding in the video scaler
-	+ Fixed: Improved compatibility with streams that have missing/misplaced PMTs
-	Assorted other changes
-	
-	Mac Changes:
-	+ Changed: Bigger buffer for the Activity Log
-	+ Changed: Redesigned Queueing window
-	+ Changed: Redesigned Preferences window
-	+ Changed: Structural reorganization of the code into more segmented files
-	+ Fixed: Closing the main window no longer causes HandBrake to quit
-	+ Fixed: Changing dimensions in Picture Settings no longer causes a crash
-	+ Fixed: Target size bitrate calculation
-	+ Fixed: Picture Settings previews now scale to display resolution and screen size
-	Assorted other changes
-	
-	Windows Changes:
-	+ Added: More robust exception handling
-	+ Added: On-completion options to shutdown, suspend, etc
-	+ Added: Turn tooltips on or off
-	+ Changed: Open source, NullSoft installer
-	+ Fixed: Add-to-queue issues
-	+ Fixed: Foreign language issues
-	Assorted other changes
-	
+    Core HandBrake Changes:
+    + Added: Forced subtitle support
+    + Added: 6-channel Vorbis audio
+    + Changed: Much better buffer management, leading to impressive speed-ups all over the place
+    + Changed: Color subtitles now display in color, instead of being transparent.
+    + Changed: All errors to stderr with hb_log() instead of to stdout with fprintf()
+    + Changed: Accept stream input where the file type is in caps (.VOB instead of just .vob, etc)
+    + Changed: Better quality Vorbis codec (AoTuV)
+    + Changed: Faster (threaded) ffmpeg
+    + Changed: Force x264 to use a key frame at chapter markers
+    + Changed: Try to recover from bad preview scans instead of crashing
+    + Fixed: No more hanging when using MKV with chapter markers
+    + Fixed: "Same as source" FPS now works correctly when the end-credits of a progressive film are interlaced.
+    + Fixed: "Slow" deinterlacing no longer doubles up the chapter markers
+    + Fixed: Proper display of fading subtitles
+    + Fixed: Nasty artifacts from inaccurate rounding in the video scaler
+    + Fixed: Improved compatibility with streams that have missing/misplaced PMTs
+    Assorted other changes
+    
+    Mac Changes:
+    + Changed: Bigger buffer for the Activity Log
+    + Changed: Redesigned Queueing window
+    + Changed: Redesigned Preferences window
+    + Changed: Structural reorganization of the code into more segmented files
+    + Fixed: Closing the main window no longer causes HandBrake to quit
+    + Fixed: Changing dimensions in Picture Settings no longer causes a crash
+    + Fixed: Target size bitrate calculation
+    + Fixed: Picture Settings previews now scale to display resolution and screen size
+    Assorted other changes
+    
+    Windows Changes:
+    + Added: More robust exception handling
+    + Added: On-completion options to shutdown, suspend, etc
+    + Added: Turn tooltips on or off
+    + Changed: Open source, NullSoft installer
+    + Fixed: Add-to-queue issues
+    + Fixed: Foreign language issues
+    Assorted other changes
+    
 Changes between 0.8.5b1 and 0.9.0:
 
-	Core HandBrake Changes
-	+ Added: Matroska (MKV) container output
-	+ Added: Limited MPEG-2 transport stream (.VOB and .TS) input support
-	+ Added: Option to write MP4 files larger than 4GB
-	+ Added: Video filters (pullup, yadif, mcdeint, hqdn3d, pp7)
-	+ Added: DTS audio input
-	+ Changed: Switched to Lanczos scaling from libswscale
-	+ Changed: Precise chapter marker location
-	+ Changed: Newer libraries
-	+ Changed: Much faster (threaded) iPod encoding
-	+ Changed: "Same as source" works differently (better?) now
-	+ Fixed: Audio drops should be thoroughly banished now
-	+ Fixed: MP2 audio support
-	Assorted other changes
-	
-	CLI Changes:
-	+ Added: Chapter naming
-	+ Added: Many new command line options for subtitles and filters.
-	+ Added: Turbo for 2-pass x264 encodes
-	Assorted other changes
-	
-	Mac Changes:
-	+ Added: Chapter naming
-	+ Added: Growl support
-	+ Added: Advanced x264 settings tab
-	+ Added: Logging window
-	+ Added: Turbo for 2-pass x264 encodes
-	+ Added: Many new presets
-	+ Added: Unified toolbar
-	+ Changed: Default settings
-	+ Changed: Further integration of the queue and active queuing
-	+ Changed: Browse DVDs like any other volumes
-	+ Fixed: No more floating window syndrome (Mac)
-	+ Fixed: Presets retain "magic sauce" when you change settings
-	Assorted other changes
-	
-	Windows Changes:
-	+ Changed: New C#-based Windows GUI front-end
-	+ Changed: Improved queuing
-	+ Changed: DVD information parser
-	Assorted other changes
+    Core HandBrake Changes
+    + Added: Matroska (MKV) container output
+    + Added: Limited MPEG-2 transport stream (.VOB and .TS) input support
+    + Added: Option to write MP4 files larger than 4GB
+    + Added: Video filters (pullup, yadif, mcdeint, hqdn3d, pp7)
+    + Added: DTS audio input
+    + Changed: Switched to Lanczos scaling from libswscale
+    + Changed: Precise chapter marker location
+    + Changed: Newer libraries
+    + Changed: Much faster (threaded) iPod encoding
+    + Changed: "Same as source" works differently (better?) now
+    + Fixed: Audio drops should be thoroughly banished now
+    + Fixed: MP2 audio support
+    Assorted other changes
+    
+    CLI Changes:
+    + Added: Chapter naming
+    + Added: Many new command line options for subtitles and filters.
+    + Added: Turbo for 2-pass x264 encodes
+    Assorted other changes
+    
+    Mac Changes:
+    + Added: Chapter naming
+    + Added: Growl support
+    + Added: Advanced x264 settings tab
+    + Added: Logging window
+    + Added: Turbo for 2-pass x264 encodes
+    + Added: Many new presets
+    + Added: Unified toolbar
+    + Changed: Default settings
+    + Changed: Further integration of the queue and active queuing
+    + Changed: Browse DVDs like any other volumes
+    + Fixed: No more floating window syndrome (Mac)
+    + Fixed: Presets retain "magic sauce" when you change settings
+    Assorted other changes
+    
+    Windows Changes:
+    + Changed: New C#-based Windows GUI front-end
+    + Changed: Improved queuing
+    + Changed: DVD information parser
+    Assorted other changes
 
 Changes between 0.8.0b1 and 0.8.5b1
 
-	Core HandBrake Changes
-	+ Added: iTunes-style chapter markers.
-	+ Added: 5.1 AAC surround sound.
-	+ Added: Dolby Pro Logic I and II downmixing of discrete surround sound.
-	+ Added: 1-channel AAC sound from monophonic sources.
-	+ Added: Advanced x264 options. (including High Profile support)
-	+ Added: B-frames in x264 + .mp4
-	+ Added: PPC Linux Support.
-	+ Added: Preserve language IDs from the DVD in .mp4
-	+ Added: Snapshot build method.
-	+ Added: Anamorphic video display in QuickTime.
-	+ Changed: Renamed back to HandBrake.
-	+ Changed: Libraries updated.
-	+ Changed: Enabled Update Checker.
-	+ Fixed: Multiple Audio tracks.
-	+ Fixed: Sped up DVD scanning time by being nicer to libdvdread.
-	+ Fixed: .dmg is now mountable in Mac OS X versions older than 10.4
-	+ Fixed: Proper output size from x264 in target size mode.
-	+ Fixed: Allows output sizes larger than 2 gigs in Linux.
-	+ Fixed: Several small memory leaks have been plugged.
-	+ Fixed: Fixes for 64-bit systems.
-	+ Fixed: Keep Aspect Ratio is no longer forced, so user-set height values are respected.
+    Core HandBrake Changes
+    + Added: iTunes-style chapter markers.
+    + Added: 5.1 AAC surround sound.
+    + Added: Dolby Pro Logic I and II downmixing of discrete surround sound.
+    + Added: 1-channel AAC sound from monophonic sources.
+    + Added: Advanced x264 options. (including High Profile support)
+    + Added: B-frames in x264 + .mp4
+    + Added: PPC Linux Support.
+    + Added: Preserve language IDs from the DVD in .mp4
+    + Added: Snapshot build method.
+    + Added: Anamorphic video display in QuickTime.
+    + Changed: Renamed back to HandBrake.
+    + Changed: Libraries updated.
+    + Changed: Enabled Update Checker.
+    + Fixed: Multiple Audio tracks.
+    + Fixed: Sped up DVD scanning time by being nicer to libdvdread.
+    + Fixed: .dmg is now mountable in Mac OS X versions older than 10.4
+    + Fixed: Proper output size from x264 in target size mode.
+    + Fixed: Allows output sizes larger than 2 gigs in Linux.
+    + Fixed: Several small memory leaks have been plugged.
+    + Fixed: Fixes for 64-bit systems.
+    + Fixed: Keep Aspect Ratio is no longer forced, so user-set height values are respected.
 
-	CLI Interface Changes
-	+ Added: Customize maximum width and height while keeping aspect ratio
-	+ Changed: Much prettier help screen
-	+ Changed: HBTest/MediaForkCLI renamed to HandBrakeCLI
-	+ Fixed: Better display of audio and subtitle ids
+    CLI Interface Changes
+    + Added: Customize maximum width and height while keeping aspect ratio
+    + Changed: Much prettier help screen
+    + Changed: HBTest/MediaForkCLI renamed to HandBrakeCLI
+    + Fixed: Better display of audio and subtitle ids
 
-	Mac GUI Changes
-	+ Added: Presets! Includes initial ones for AppleTV, iPod, and PS3.
-	+ Added: Preference option to auto-name output files with the DVD name and title number.
-	+ Added: Preset support for x264 options.
-	+ Changed: Remembers last destination path.
-	+ Changed: Remembers last source path.
-	+ Changed: Copy and paste in text fields.
-	+ Changed: Updates target size more quickly.
-	+ Changed: Mac GUI no longer retains target size values between enqueued jobs. (http://HandBrake.m0k.org/forum/viewtopic.php?t=249)
-	+ Fixed: Preview frames are no longer distorted in anamorphic mode.
-	+ Fixed: Mac GUI no longer floats above other windows.
-	+ Fixed: Browse by file no longer dims the browse button preventing you from changing browse locations without switching back and forth between it and drive selection. (http://HandBrake.m0k.org/forum/viewtopic.php?t=342)
-	+ Fixed: Makes sure destination directory is valid.
-	+ Fixed: Fills in the file save field with the current output name instead of leaving it blank.
-	+ Fixed: Update destination field with the current path instead of using the last one, which could have been a DVD.
+    Mac GUI Changes
+    + Added: Presets! Includes initial ones for AppleTV, iPod, and PS3.
+    + Added: Preference option to auto-name output files with the DVD name and title number.
+    + Added: Preset support for x264 options.
+    + Changed: Remembers last destination path.
+    + Changed: Remembers last source path.
+    + Changed: Copy and paste in text fields.
+    + Changed: Updates target size more quickly.
+    + Changed: Mac GUI no longer retains target size values between enqueued jobs. (http://HandBrake.m0k.org/forum/viewtopic.php?t=249)
+    + Fixed: Preview frames are no longer distorted in anamorphic mode.
+    + Fixed: Mac GUI no longer floats above other windows.
+    + Fixed: Browse by file no longer dims the browse button preventing you from changing browse locations without switching back and forth between it and drive selection. (http://HandBrake.m0k.org/forum/viewtopic.php?t=342)
+    + Fixed: Makes sure destination directory is valid.
+    + Fixed: Fills in the file save field with the current output name instead of leaving it blank.
+    + Fixed: Update destination field with the current path instead of using the last one, which could have been a DVD.
 
-	Windows GUI Changes ñ Version 2.2 beta 1
-	+ Added: A few presets for the iPod in the menu.
-	+ Added: Ability to set default settings for all program encode options.
-	+ Added: Ability to turn off Automatic Update check on start-up. See Tools > Options
-	+ Added: Mod 16 check on the Height and Width boxes.
-	+ Added: Check the amount of hard disk space left is not running low when saving file.
-	+ Added: Option to have a Read DVD window showup on start-up.
-	+ Added: ìView DVD dataî Menu item in the tools menu.
-	+ Added: Links to the Homepage, forum, wiki and documentation page in the Help menu.
-	+ Added: Chapter markers check box (New feature in 0.8.5b1 CLI)
-	+ Changed: View DVD Information no longer appears after clicking the ìBrowseî button.
-	+ Changed: A few changes to the GUI - replaced textboxes with Dropdowns which auto-populate.
-	+ Changed: Auto Crop and Aspect text now automatically update when a new title is selected.
-	+ Changed: Several tweaks to the GUI design, remove a few text items that are no longer needed.
-	+ Changed: Ability to Queue videos enabled with completely re-written code.
-	+ Changed: Ability to queue stuff up while the encoding process is running.
-	+ Changed: Ability to remove items from the encode queue while is running.
-	+ Changed: Anamorphic option blanks out resolution boxes.
-	+ Changed: Re-written update checker.
-	+ Changed: Ability to turn off update check on start-up in Tools > Options
-	+ Changed: Auto Crop option now fills in figures into text boxes when selected.
-	+ Changed: Mp4 now default output file extension.
-	+ Changed: Enabled 5.1 AAC option.
-	+ Changed: Enabled h264 advanced options.
-	+ Changed: Updated the FAQ.
-	+ Changed: Included new version of HandBrake. Version 0.8.5b1.
-	+ Fixed: Pixel Ratio Not being saved with the profile.
-	+ Removed: Both ìView Dataî buttons on the Title Selection Window.
-	+ Removed: The ìRead DVDî button. -  Automatically reads the DVD after selecting a source now.
-	+ Removed: The Help and Support window. Been replaced with a few Web Links.
+    Windows GUI Changes ñ Version 2.2 beta 1
+    + Added: A few presets for the iPod in the menu.
+    + Added: Ability to set default settings for all program encode options.
+    + Added: Ability to turn off Automatic Update check on start-up. See Tools > Options
+    + Added: Mod 16 check on the Height and Width boxes.
+    + Added: Check the amount of hard disk space left is not running low when saving file.
+    + Added: Option to have a Read DVD window showup on start-up.
+    + Added: ìView DVD dataî Menu item in the tools menu.
+    + Added: Links to the Homepage, forum, wiki and documentation page in the Help menu.
+    + Added: Chapter markers check box (New feature in 0.8.5b1 CLI)
+    + Changed: View DVD Information no longer appears after clicking the ìBrowseî button.
+    + Changed: A few changes to the GUI - replaced textboxes with Dropdowns which auto-populate.
+    + Changed: Auto Crop and Aspect text now automatically update when a new title is selected.
+    + Changed: Several tweaks to the GUI design, remove a few text items that are no longer needed.
+    + Changed: Ability to Queue videos enabled with completely re-written code.
+    + Changed: Ability to queue stuff up while the encoding process is running.
+    + Changed: Ability to remove items from the encode queue while is running.
+    + Changed: Anamorphic option blanks out resolution boxes.
+    + Changed: Re-written update checker.
+    + Changed: Ability to turn off update check on start-up in Tools > Options
+    + Changed: Auto Crop option now fills in figures into text boxes when selected.
+    + Changed: Mp4 now default output file extension.
+    + Changed: Enabled 5.1 AAC option.
+    + Changed: Enabled h264 advanced options.
+    + Changed: Updated the FAQ.
+    + Changed: Included new version of HandBrake. Version 0.8.5b1.
+    + Fixed: Pixel Ratio Not being saved with the profile.
+    + Removed: Both ìView Dataî buttons on the Title Selection Window.
+    + Removed: The ìRead DVDî button. -  Automatically reads the DVD after selecting a source now.
+    + Removed: The Help and Support window. Been replaced with a few Web Links.
 
 
 Changes between 0.7.1 and 0.8.0
