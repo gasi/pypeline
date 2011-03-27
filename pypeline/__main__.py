@@ -144,7 +144,7 @@ def get_sources(path):
 def get_title(descriptor, default='Untitled'):
     if not descriptor:
         return default
-    
+
     if 'series_title' in descriptor:
         return '%(series_title)s S%(season)02dE%(episode)02d' % descriptor
     elif 'title' in descriptor:
