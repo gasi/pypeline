@@ -27,8 +27,10 @@ class TestParser(unittest.TestCase):
               ('2001.A.Space.Odyssey[1968].wmv',
                {'title': '2001 a space odyssey', 'year': 1968})]
 
-    TV_SHOWS = [('Glee.S02E15.HDTV.XviD-LOL.[VTV]',
-                {'series_title': 'glee', 'season': 2, 'episode': 15})]
+    TV_SHOWS = [('Glee.S02E15.HDTV.XviD-LOL.[VTV].avi',
+                {'series_title': 'glee', 'season': 2, 'episode': 15}),
+                ('30 Rock S04 E01 - Season 4.avi',
+                {'series_title': '30 rock', 'season': 4, 'episode': 1})]
 
     def test_parse_movie(self):
         for filename, movie in self.MOVIES:

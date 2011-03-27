@@ -18,7 +18,7 @@ MIN_YEAR = 1888 # http://en.wikipedia.org/wiki/Roundhay_Garden_Scene
 
 def parse_tv_show(path):
     normalized_filename = get_normalized_filename(path)
-    match = re.search(r'(.*)s(\d+)e(\d+).*', normalized_filename)
+    match = re.search(r'(.*)s(\d+)\s*e(\d+).*', normalized_filename)
     if match is None:
         return None
     tv_show = {'series_title': match.group(1).strip(),
