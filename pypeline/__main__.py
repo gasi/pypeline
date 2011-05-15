@@ -49,7 +49,8 @@ def encode(source, target):
                          '-R', '48,Auto',
                          '-D', '0.0,0.0'
                          '-f', 'mp4 -4',
-                         '-X', '960',
+                         '--maxWidth', '1280',
+                         '--optimize', '',
                          '--loose-anamorphic', '',
                          '-m', '',
                          '-x', 'cabac=0:ref=2:me=umh:b-adapt=2:weightb=0:trellis=0:weightp=0'],
