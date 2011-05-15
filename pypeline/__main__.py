@@ -153,7 +153,7 @@ def get_title(descriptor, default='Untitled'):
     else:
         return default
 
-def process(src, dest):
+def process(src, dest, encode_only=False):
     s = os.path.expanduser(src)
     d = os.path.expanduser(dest)
     if not os.path.exists(d):
@@ -161,13 +161,19 @@ def process(src, dest):
     
     sources = get_sources(s)
     for source in sources:
-        # acquire metadata
-        item = parser.parse_tv_show(source)
-        if not item:
-            item = parser.parse_movie(source)
+        item = None
         descriptor = None
-        if item:
-            descriptor = get_imdb_descriptor(item)
+        # acquire metadata
+        if not encode_only:
+            item = parser.parse_tv_show(source)
+            if not item:
+                item = parser.parse_movie(source)
+            if item:
+                try:
+                    descriptor = get_imdb_descriptor(item)
+                except:
+                    print('Failed to get descriptor')
+                    descriptor = None
 
         # encoding
         target = get_target_filename(d, source, descriptor)
@@ -176,7 +182,7 @@ def process(src, dest):
             encode(source, target)
 
         # metadata
-        if descriptor:
+        if descriptor and not encode_only:
             print('Writing metadata: %s' % get_title(descriptor))
             set_metadata(target, descriptor)
 
@@ -188,8 +194,10 @@ def main():
     parser.add_option('-d', '--destination', dest='destination',
                       default=DEFAULT_DESTINATION,
                       help='Destination path. Default: ' + DEFAULT_DESTINATION)
+    parser.add_option('-e', '--encode-only', action='store_true', dest='encode_only',
+                      default=False, help='Encode only. Default: ' + str(False))
     (options, args) = parser.parse_args()
-    process(options.source, options.destination)
+    process(options.source, options.destination, options.encode_only)
 
 if __name__ == '__main__':
     main()
