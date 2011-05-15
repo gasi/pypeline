@@ -25,7 +25,7 @@ DEFAULT_DESTINATION = '~/Movies/pypeline'
 
 ENCODED_EXTENSIONS = ['m4v', 'mp4']
 EXTENSIONS = ['wmv', 'avi', 'mpg', 'mpeg', 'mkv'] + ENCODED_EXTENSIONS
-ILLEGAL_CHARACTERS = ['[', ']', '*', ':']
+ILLEGAL_CHARACTERS = ['[', ']', '*', ':', '/', '<', '>', '=', ';']
 
 IMDb = imdb.IMDb()
 SERIES_OVERRIDES = {}
