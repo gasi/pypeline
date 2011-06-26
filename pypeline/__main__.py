@@ -178,7 +178,7 @@ def process(src, dest, encode_only=False):
                 try:
                     descriptor = get_descriptor(item)
                 except:
-                    print('Failed to get descriptor')
+                    print('Failed to get descriptor: %s' % item.get('title', ''))
                     descriptor = None
 
         # encoding
