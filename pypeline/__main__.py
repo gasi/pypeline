@@ -119,6 +119,8 @@ def set_metadata(filename, descriptor):
                   '--stik', 'Movie']
     with open(os.devnull, 'w') as nirvana:
         subprocess.call(args, stdout=nirvana)
+
+    # Rename file
     temp_filename = get_target_temp_filename(filename)
     if temp_filename:
         os.remove(filename)
