@@ -56,7 +56,7 @@ def encode(source, target):
                          '-x', 'cabac=0:ref=2:me=umh:b-adapt=2:weightb=0:trellis=0:weightp=0'],
                          stdout=nirvana, stderr=nirvana)
 
-def get_imdb_descriptor(item):
+def get_descriptor(item):
     descriptor = None
     if 'series_title' in item:
         series_title = item['series_title'].lower()
@@ -170,7 +170,7 @@ def process(src, dest, encode_only=False):
                 item = parser.parse_movie(source)
             if item:
                 try:
-                    descriptor = get_imdb_descriptor(item)
+                    descriptor = get_descriptor(item)
                 except:
                     print('Failed to get descriptor')
                     descriptor = None
