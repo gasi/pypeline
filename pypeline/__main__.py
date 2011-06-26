@@ -12,6 +12,7 @@ VERSION = '0.0.1'
 
 import imdb
 import glob
+import json
 import logging
 import optparse
 import os
@@ -19,6 +20,10 @@ import os.path
 import parser
 import re
 import subprocess
+import tmdb
+import urllib
+
+import settings
 
 DEFAULT_SOURCE = '~/Downloads'
 DEFAULT_DESTINATION = '~/Movies/pypeline'
@@ -92,6 +97,18 @@ def get_descriptor(item):
                       'director': movie.get('director', [{'name':''}])[0].get('name', ''),
                       'year': int(movie['year']),
                       'cover': movie.get('full-size cover url', '')}
+
+    # Find artwork on TMDb
+    try:
+        title = urllib.quote(descriptor.get('title').encode("utf-8"))
+        url = 'http://api.themoviedb.org/2.1/Movie.search/en/json/%(api_key)s/%(title)s'
+        response = urllib.urlopen(url % {'api_key': settings.TMDB_API_KEY, 'title': title})
+        movie = json.loads(response.read())[0]
+        cover = movie['posters'][0]['image']['url']
+        descriptor['cover'] = cover
+    except:
+        # Never mind ;)
+        pass
 
     return descriptor
 
