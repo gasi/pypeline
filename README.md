@@ -49,6 +49,8 @@ Acknowledgements
 
 Thanks to the authors of [HandBrake][], [IMDb.py][] and [AtomicParsley][].
 
+*This product uses the [TMDb API][] but is not endorsed or certified by [TMDb][].*
+
 
 Reporting Issues
 ----------------
@@ -64,3 +66,5 @@ If you encounter any bugs or other issues, please file them in the
 [imdb.py]: http://imdbpy.sourceforge.net/
 [atomicparsley]: http://atomicparsley.sourceforge.net/
 [imdb]: http://imdb.com/
+[TMDb API]: http://api.themoviedb.org/
+[TMDb]: http://www.themoviedb.org/
