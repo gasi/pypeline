@@ -118,6 +118,17 @@ def set_metadata(filename, descriptor):
             '--title', '%(title)s' % descriptor,
             '--year', '%(year)d' % descriptor,
             '--description', '%(plot)s' % descriptor]
+
+
+    # Cover art
+    cover_exists = bool(descriptor['cover'])
+    if cover_exists:
+        # Download artwork
+        base, ext = os.path.splitext(filename)
+        cover_filename = base + '.jpg'
+        urllib.urlretrieve(descriptor['cover'], cover_filename)
+        args +=  ['--artwork', cover_filename]
+
     if 'series_title' in descriptor:
         args +=  ['--album', '%(series_title)s, Season %(season)d' % descriptor,
                   '--albumArtist', '%(series_title)s' % descriptor,
@@ -136,6 +147,10 @@ def set_metadata(filename, descriptor):
                   '--stik', 'Movie']
     with open(os.devnull, 'w') as nirvana:
         subprocess.call(args, stdout=nirvana)
+
+    # Delete cover art
+    if cover_exists:
+        os.remove(cover_filename)
 
     # Rename file
     temp_filename = get_target_temp_filename(filename)
