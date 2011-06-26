@@ -74,7 +74,8 @@ def get_descriptor(item):
                       'season': int(episode['season']),
                       'episode': int(episode['episode']),
                       'year': int(episode['year']),
-                      'plot': episode.get('plot', '')}
+                      'plot': episode.get('plot', ''),
+                      'cover': movie.get('full-size cover url', '')}
     else:
         title = item['title'].lower()
         if title not in MOVIE_OVERRIDES:
@@ -85,10 +86,13 @@ def get_descriptor(item):
         else:
             movie = IMDb.get_movie(MOVIE_OVERRIDES[title])
         IMDb.update(movie)
+
         descriptor = {'title': movie['title'],
                       'plot': movie.get('plot', [''])[0],
                       'director': movie.get('director', [{'name':''}])[0].get('name', ''),
-                      'year': int(movie['year'])}
+                      'year': int(movie['year']),
+                      'cover': movie.get('full-size cover url', '')}
+
     return descriptor
 
 def set_metadata(filename, descriptor):
