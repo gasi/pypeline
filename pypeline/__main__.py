@@ -162,7 +162,7 @@ def process(src, dest, encode_only=False):
     d = os.path.expanduser(dest)
     if not os.path.exists(d):
         os.makedirs(d)
-    
+
     sources = get_sources(s)
     for source in sources:
         item = None
