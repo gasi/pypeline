@@ -435,7 +435,7 @@ Changes between 0.9.0 and 0.9.1:
     + Fixed: Nasty artifacts from inaccurate rounding in the video scaler
     + Fixed: Improved compatibility with streams that have missing/misplaced PMTs
     Assorted other changes
-    
+
     Mac Changes:
     + Changed: Bigger buffer for the Activity Log
     + Changed: Redesigned Queueing window
@@ -446,7 +446,7 @@ Changes between 0.9.0 and 0.9.1:
     + Fixed: Target size bitrate calculation
     + Fixed: Picture Settings previews now scale to display resolution and screen size
     Assorted other changes
-    
+
     Windows Changes:
     + Added: More robust exception handling
     + Added: On-completion options to shutdown, suspend, etc
@@ -455,7 +455,7 @@ Changes between 0.9.0 and 0.9.1:
     + Fixed: Add-to-queue issues
     + Fixed: Foreign language issues
     Assorted other changes
-    
+
 Changes between 0.8.5b1 and 0.9.0:
 
     Core HandBrake Changes
@@ -472,13 +472,13 @@ Changes between 0.8.5b1 and 0.9.0:
     + Fixed: Audio drops should be thoroughly banished now
     + Fixed: MP2 audio support
     Assorted other changes
-    
+
     CLI Changes:
     + Added: Chapter naming
     + Added: Many new command line options for subtitles and filters.
     + Added: Turbo for 2-pass x264 encodes
     Assorted other changes
-    
+
     Mac Changes:
     + Added: Chapter naming
     + Added: Growl support
@@ -493,7 +493,7 @@ Changes between 0.8.5b1 and 0.9.0:
     + Fixed: No more floating window syndrome (Mac)
     + Fixed: Presets retain "magic sauce" when you change settings
     Assorted other changes
-    
+
     Windows Changes:
     + Changed: New C#-based Windows GUI front-end
     + Changed: Improved queuing
