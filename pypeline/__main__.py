@@ -43,23 +43,30 @@ ATOMIC_PARSLEY = os.path.join(BASE, '../vendor/atomic_parsley/AtomicParsley')
 # Apple TV settings
 def encode(source, target):
     with open(os.devnull, 'w') as nirvana:
-        subprocess.call([HANDBRAKE,
-                         '-i', source,
-                         '-o', target,
-                         '-e', 'x264',
-                         '-q', '20.0',
-                         '-a', '1,1',
-                         '-E', 'faac,ac3',
-                         '-B', '160,160 -6 dpl2,auto',
-                         '-R', '48,Auto',
-                         '-D', '0.0,0.0'
-                         '-f', 'mp4 -4',
-                         '--maxWidth', '1280',
-                         '--optimize', '',
-                         '--loose-anamorphic', '',
-                         '-m', '',
-                         '-x', 'cabac=0:ref=2:me=umh:b-adapt=2:weightb=0:trellis=0:weightp=0'],
-                         stdout=nirvana, stderr=nirvana)
+        args = [HANDBRAKE,
+                '-i', source,
+                '-o', target,
+                '-e', 'x264',
+                '-q', '20.0',
+                '-a', '1,1',
+                '-E', 'faac,ac3',
+                '-B', '160,160 -6 dpl2,auto',
+                '-R', '48,Auto',
+                '-D', '0.0,0.0'
+                '-f', 'mp4 -4',
+                '--maxWidth', '1280',
+                '--optimize', '',
+                '--loose-anamorphic', '',
+                '-m', '',
+                '-x', 'cabac=0:ref=2:me=umh:b-adapt=2:weightb=0:trellis=0:weightp=0']
+
+        # Subtitles
+        base, ext = os.path.splitext(source)
+        srt_filename = base + '.srt'
+        if os.path.exists(srt_filename):
+            args += ['--srt-file', srt_filename]
+
+        subprocess.call(args, stdout=nirvana, stderr=nirvana)
 
 def get_descriptor(item):
     descriptor = None
