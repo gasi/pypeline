@@ -126,13 +126,14 @@ def set_metadata(filename, descriptor):
             '--year', '%(year)d' % descriptor,
             '--description', '%(plot)s' % descriptor]
 
+    # Various filenames
+    base, ext = os.path.splitext(filename)
+    cover_filename = base + '.jpg'
 
     # Cover art
     cover_exists = bool(descriptor['cover'])
     if cover_exists:
         # Download artwork
-        base, ext = os.path.splitext(filename)
-        cover_filename = base + '.jpg'
         urllib.urlretrieve(descriptor['cover'], cover_filename)
         args +=  ['--artwork', cover_filename]
 
