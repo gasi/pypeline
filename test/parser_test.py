@@ -8,7 +8,7 @@ Created by Daniel Gasienica on 2010-12-29.
 Copyright (c) 2010 Daniel Gasienica. All rights reserved.
 """
 
-import pypeline
+import pypeline.parser
 import unittest
 
 class TestParser(unittest.TestCase):
@@ -30,7 +30,9 @@ class TestParser(unittest.TestCase):
     TV_SHOWS = [('Glee.S02E15.HDTV.XviD-LOL.[VTV].avi',
                 {'series_title': 'glee', 'season': 2, 'episode': 15}),
                 ('30 Rock S04 E01 - Season 4.avi',
-                {'series_title': '30 rock', 'season': 4, 'episode': 1})]
+                {'series_title': '30 rock', 'season': 4, 'episode': 1}),
+                ('House M.D.4x01.HDTV.720p.x264.DD5.1.MMI.mkv',
+                {'series_title': 'house m d', 'season': 4, 'episode': 1})]
 
     def test_parse_movie(self):
         for filename, movie in self.MOVIES:

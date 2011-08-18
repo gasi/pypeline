@@ -20,6 +20,8 @@ def parse_tv_show(path):
     normalized_filename = get_normalized_filename(path)
     match = re.search(r'(.*)s(\d+)\s*e(\d+).*', normalized_filename)
     if match is None:
+        match = re.search(r'(.*)(\d+)\s*x(\d+).*', normalized_filename)
+    if match is None:
         return None
     tv_show = {'series_title': match.group(1).strip(),
                'season': int(match.group(2)),
